@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            transition: background-image 1s;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-image: url('modi.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        body.dark-mode {
+            background-color: black;
+            color: aliceblue;
+            transition: background-image 1s;
+            background-image:url(dark-modi.png);
+            background-size: cover;
+            background-position: top;
+        }
+        @keyframes start{
+            from{
+                transform: translateX(-300px);
+            }
+            to{
+                transform: translateX(0px);
+            }
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            background-color: transparent;
+            margin-bottom: 2%;
+            transition: background-color 0.5s;
+            flex-wrap: wrap;
+            animation-name: start;
+            animation-duration: 1s;
+        }
+        body.dark-mode .navbar {
+            background-color: transparent;
+            color: aliceblue;
+            animation-name: start;
+            animation-duration: 1s;
+        }
+
+        #icon1:hover, #icon2:hover, #icon3:hover, #icon4:hover {
+            transition: 0.5s;
+            transform: translateY(-20%);
+        }
+
+        .navbar a {
+            text-decoration: none;
+            color: inherit;
+            font-weight: bold;
+            font-style: italic;
+            font-size: 1.5em;
+            margin: 1% 7%;
+            flex: 1; 
+            white-space: nowrap;
+            animation-name: start;
+            animation-duration: 1s;
+        }
+
+        #modeToggle {
+            cursor: pointer;
+            font-size: 1.5em; 
+            border: none;
+            background: none;
+            padding: 0;
+            transition: color 0.5s;
+        }
+
+
+        body.dark-mode #modeToggle {
+            color: aliceblue;
+        }
+
+        body.dark-mode #icon1:hover,#icon2:hover,#icon3:hover,#icon4:hover {
+            /*background-color: aliceblue;
+            color: black;*/
+            transform: translateY(-20%);
+            transition: 0.5s;
+        }
+        @media (max-width: 480px) {
+            .navbar a {
+                font-size: 0.8em;
+            }
+        
+            .navbar {
+                justify-content: space-between;
+                padding: 10px;
+            }
+        
+            #modeToggle {
+                font-size: 1.5em;
+            }
+        
+            .education-container {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                margin-top: 10px;
+                min-height: 75vh;
+            }
+        
+            .education-box {
+                width: 90%;
+                margin: 10px;
+            }
+            .social-icons {
+                width: 150%;
+                margin-top: 0px;
+            }
+            .social-icons img {
+                width: 90px;
+                height: auto;
+                margin: 0 10px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .navbar {
+                justify-content: space-between;
+            }
+
+            .navbar a {
+                font-size: 1.5em;
+            }
+
+            #modeToggle {
+                font-size: 1.5em;
+            }
+        }
+        .education-container {
+            display: flex;
+            justify-content: space-around;
+            margin: 20px;
+        }
+        .education-box {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            padding: 20px;
+            width: 30%;
+            text-align: center;
+            margin: 10%;
+            transition: transform 0.5s;
+        }
+        .education-box1:hover,.education-box2:hover {
+            transform: translateY(20%);
+        }
+        .education-box1,
+        .education-box2 {
+            width: 45%;
+        }
+        .social-icons {
+            display: flex;
+            margin-top: 20%;
+            animation-name: start;
+            animation-duration: 1s;
+        }
+        .social-icons img {
+            width: 10%;
+            height: auto;
+            margin: 0 5%;
+        }
+        .social-icons img:hover {
+            transform: translateY(-20%);
+            transition: 0.5s;
+        }
+        body.dark-mode .social-icons {
+            /*background-color:black;*/
+            transition: 0.5s;
+        }
+    </style>
+</head>
+<body>
+    <button id="modeToggle" onclick="toggleMode()">🌙</button>
+    <div class="navbar">
+        <a href="index.html" id="icon1">About me</a>
+        <a href="achievements.html" id="icon2">Achievements</a>
+        <a href="skills.html" id="icon3">Skills</a>
+        <a href="blog.html" id="icon4">Blog</a>
+    </div>
+    <div class="education-container">
+        <div class="education-box1">
+            <h2>Primary Education</h2>
+            <p>2008 - 2012</p>
+            <p>Chirec International school(Hyderabad)</p>
+            <p>2012 - 2016</p>
+            <p>Cherry Lane primary(London)</p>
+        </div>
+        <div class="education-box2">
+            <h2>Secondary Education</h2>
+            <p>2016 - 2021</p>
+            <p>Chirec Internaional school(Hyderabad)</p>
+            <p>2021-2023</p>
+            <p>FIITJEE(Saifabad)</p>
+        </div>
+    </div>
+    <footer>
+        <div class="social-icons">
+            <a href="https://www.instagram.com/amey.bangera?igsh=MzFvOXZneGk1YXNh" target="_blank"><img src="instagram.png" alt="Instagram"></a>
+            <a href="mailto:amey01.bangera@gmail.com"><img src="new.png" alt="Email"></a>
+            <a href="https://github.com/AmeyBangera" target="_blank"><img src="github.png" alt="GitHub"></a>
+        </div>  
+    </footer>
+    <script>
+        function toggleMode() {
+            const body = document.body;
+            const modeToggleBtn = document.getElementById('modeToggle');
+            body.classList.toggle('dark-mode');
+            const isDarkMode = body.classList.contains('dark-mode');
+            modeToggleBtn.innerHTML = isDarkMode ? '☀️' : '🌙';
+        }
+    </script>
+</body>
+</html>
