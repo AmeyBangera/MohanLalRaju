@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            transition: background-image 1s;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-image: url('modi.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        body.dark-mode {
+            background-color: black;
+            color: aliceblue;
+            transition: background-image 1s;
+            background-image:url(dark-modi.png);
+            background-size: cover;
+            background-position: top;
+        }
+        @keyframes start{
+            from{
+                transform: translateX(-300px);
+            }
+            to{
+                transform: translateX(0px);
+            }
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            background-color: transparent;
+            margin-bottom: 2%;
+            transition: background-color 0.5s;
+            flex-wrap: wrap;
+            animation-name: start;
+            animation-duration: 1s;
+        }
+        body.dark-mode .navbar {
+            background-color: transparent;
+            color: aliceblue;
+            animation-name: start;
+            animation-duration: 1s;
+        }
+        #icon1:hover, #icon2:hover, #icon3:hover, #icon4:hover {
+            transition: 0.5s;
+            transform: translateY(-20%);
+        }
+        .navbar a {
+            text-decoration: none;
+            color: inherit;
+            font-weight: bold;
+            font-style: italic;
+            font-size: 1.5em; /* Adjusted font size */
+            margin: 1% 7%;
+            flex: 1; 
+            white-space: nowrap;
+            animation-name: start;
+            animation-duration: 1s;
+        }
+        #modeToggle {
+            cursor: pointer;
+            font-size: 1.5em; /* Adjusted font size */
+            border: none;
+            background: none;
+            padding: 0;
+            transition: color 0.5s;
+        }
+        body.dark-mode #modeToggle {
+            color: aliceblue;
+        }
+
+        body.dark-mode #icon1:hover,#icon2:hover,#icon3:hover,#icon4:hover {
+            /*background-color: aliceblue;
+            color: black;*/
+            transform: translateY(-20%);
+            transition: 0.5s;
+        }
+        @media (max-width: 768px) {
+            .navbar {
+                justify-content: space-between;
+            }
+
+            .navbar a {
+                font-size: 1.5em;
+            }
+
+            #modeToggle {
+                font-size: 1.5em;
+            }
+        }
+        @media (max-width: 480px) {
+            .navbar a {
+                font-size: 1em;
+            }
+            body {
+                background-size: cover;
+            }
+            .navbar {
+                justify-content: space-between;
+                padding: 10px;
+            }
+            #modeToggle {
+                font-size: 1.5em;
+            }
+            .achievement-container {
+                margin: 10px;
+                padding: 5px;
+                min-height: 77vh;
+            }
+            .achievement {
+                text-align: center;
+            }
+            .social-icons {
+                display: flex;
+                justify-content: center;
+                margin-top: 10px;
+                width: 130%;
+            }
+            .social-icons img {
+                width: 40px;
+                height: auto;
+                margin: 0px;
+            }
+        }
+        .social-icons {
+            display: flex;
+            margin-top: 9%;
+            animation-name: start;
+            animation-duration: 1s;
+        }
+        .social-icons img {
+            width: 10%;
+            height: auto;
+            margin: 0 5%;
+        }
+        .social-icons img:hover {
+            transform: translateY(-20%);
+            transition: 0.5s;
+        }
+        body.dark-mode .social-icons {
+            /*background-color:black;*/
+            transition: 0.5s;
+        }
+        .achievement {
+            text-align: center;
+        }
+        .achievement-container {
+            display: inline-block;
+            background-color:transparent;
+            padding: 3%;
+            margin: 3%;
+            transition: transform 0.5s;
+        }
+        .achievement-container:hover {
+            transform: translateY(-10%);
+        }
+        .broken-bone {
+            transition: transform 0.5s;
+        }
+        .broken-bone:hover {
+            transform: rotate(360deg);
+        }
+    </style>
+</head>
+<body>
+    <button id="modeToggle" onclick="toggleMode()">🌙</button>
+    <div class="navbar">
+        <a href="index.html" id="icon1">About me</a>
+        <a href="education.html" id="icon2">Education</a>
+        <a href="skills.html" id="icon3">Skills</a>
+        <a href="blog.html" id="icon4">Blog</a>
+    </div>
+    <div class="achievement-container">
+        <div class="achievement">
+            <p>Ive spent a total of 142 hours, 41 minutes on FIFA 23</p>
+            <p>Managed to keep 2 plants alive for more than a week</p>
+            <div class="broken-bone">
+                <p>Never broken a bone</p>
+            </div>
+            <p>Gone 46 hours without sleep</p>
+            <p>Won Litclub treasure hunt with some clutch plays</p>
+        </div>
+    </div>
+    <footer>
+        <div class="social-icons">
+            <a href="https://www.instagram.com/amey.bangera?igsh=MzFvOXZneGk1YXNh" target="_blank"><img src="instagram.png" alt="Instagram"></a>
+            <a href="mailto:amey01.bangera@gmail.com"><img src="new.png" alt="Email"></a>
+            <a href="https://github.com/AmeyBangera" target="_blank"><img src="github.png" alt="GitHub"></a>
+        </div>  
+    </footer>
+    <script>
+        function toggleMode() {
+            const body = document.body;
+            const modeToggleBtn = document.getElementById('modeToggle');
+            body.classList.toggle('dark-mode');
+            const isDarkMode = body.classList.contains('dark-mode');
+            modeToggleBtn.innerHTML = isDarkMode ? '☀️' : '🌙';
+        }
+    </script>
+</body>
+</html>

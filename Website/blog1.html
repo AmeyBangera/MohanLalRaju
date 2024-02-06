@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog 1</title>
+    <style>
+        body {
+            transition: background-image 1s;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-image: url('modi.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        body.dark-mode {
+            background-color: black;
+            color: aliceblue;
+            transition: background-image 1s;
+            background-image:url(dark-modi.png);
+            background-size: cover;
+            background-position: top;
+        }
+        @keyframes start{
+            from{
+                transform: translateX(-300px);
+            }
+            to{
+                transform: translateX(0px);
+            }
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            background-color: transparent;
+            margin-bottom: 2%;
+            transition: background-color 0.5s;
+            flex-wrap: wrap;
+            animation-name: start;
+            animation-duration: 1s;
+        }
+        body.dark-mode .navbar {
+            background-color: transparent;
+            color: aliceblue;
+            animation-name: start;
+            animation-duration: 1s;
+        }
+        @media (max-width: 480px) {
+            .navbar a {
+                font-size: 1em;
+                margin: 0.5em 1em;
+            }
+            #modeToggle {
+                font-size: 1em;
+                margin: 0.5em;
+            }
+            .wholeblog {
+                margin: 0.5em;
+                min-height: 75vh;
+            }
+        }
+    
+        #icon1:hover, #icon2:hover, #icon3:hover, #icon4:hover,#icon5:hover {
+            transition: 0.5s;
+            transform: translateY(-20%);
+        }
+
+        .navbar a {
+            text-decoration: none;
+            color: inherit;
+            font-weight: bold;
+            font-style: italic;
+            font-size: 1.5em;
+            margin: 1% 7%;
+            flex: 1;
+            white-space: nowrap;
+            animation-name: start;
+            animation-duration: 1s;
+        }
+
+        #modeToggle {
+            cursor: pointer;
+            font-size: 1.5em;
+            border: none;
+            background: none;
+            padding: 0;
+            transition: color 0.5s;
+        }
+        body.dark-mode #modeToggle {
+            color: aliceblue;
+        }
+        body.dark-mode #icon1:hover,#icon2:hover,#icon3:hover,#icon4:hover,#icon5:hover {
+            /*background-color: aliceblue;
+            color: black;*/
+            transform: translateY(-20%);
+            transition: 0.5s;
+        }
+        @media (max-width: 768px) {
+            .navbar {
+                justify-content: space-between;
+            }
+            .navbar a {
+                font-size: 1.5em;
+            }
+            #modeToggle {
+                font-size: 1.5em;
+            }
+        }
+        .social-icons {
+            display: flex;
+            margin-top: 11%;
+            animation-name: start;
+            animation-duration: 1s;
+        }
+        .social-icons img {
+            width: 10%;
+            height: auto;
+            margin: 0 5%;
+        }
+        .social-icons img:hover {
+            transform: translateY(-20%);
+            transition: 0.5s;
+        }
+        body.dark-mode .social-icons {
+            /*background-color:black;*/
+            transition: 0.5s;
+        }
+        body.dark-mode .blog-card{
+            color: aliceblue;
+            background-color: transparent;
+        }
+        .blog-container {
+            margin: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+        .blog-card {
+            background-color:transparent;
+            border: 1px solid #ddd;
+            padding: 20px;
+            width: 30%;
+            text-align: center;
+            margin: 10px;
+            transition: transform 0.5s;
+        }
+        .blog-card:hover {
+            transform: translateY(-20%);
+        }
+        .blog-card button {
+            cursor: pointer;
+            background-color: #3498db;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            margin-top: 10px;
+            transition: background-color 0.5s;
+        }
+        
+        .blog-card button:hover {
+            background-color: #2980b9;
+        }
+        .wholeblog {
+            text-align: center;
+        }
+        body.dark-mode .wholeblog{
+            color: aliceblue;
+        }
+    </style>
+</head>
+<body>
+    <button id="modeToggle" onclick="toggleMode()">🌙</button>
+    <div class="navbar">
+        <a href="index.html" id="icon1">About me</a>
+        <a href="education.html" id="icon2">Education</a>
+        <a href="achievements.html" id="icon4">Achievements</a>
+        <a href="skills.html" id="icon3">Skills</a>
+        <a href="blog.html" id="icon5">Blog</a>
+    </div>
+    <div class="wholeblog">
+        <h1>Blog 1</h1>
+        <p>Lakshwadeep goes hard</p>
+        <div id="likeCounter"></div>
+        <button id="likeButton" onclick="toggleLike()">Like</button>
+        <div class="comments-section">
+            <h3>Comments</h3>
+            <div id="comments"></div>
+            <input type="text" id="commentInput" placeholder="Add a comment">
+            <button onclick="addComment(1)">Add Comment</button>
+        </div>
+    </div>
+    <footer>
+        <div class="social-icons">
+            <a href="https://www.instagram.com/amey.bangera?igsh=MzFvOXZneGk1YXNh" target="_blank"><img src="instagram.png" alt="Instagram"></a>
+            <a href="mailto:amey01.bangera@gmail.com"><img src="new.png" alt="Email"></a>
+            <a href="https://github.com/AmeyBangera" target="_blank"><img src="github.png" alt="GitHub"></a>
+        </div>  
+    </footer>
+    <script>
+        function toggleMode() {
+            const body = document.body;
+            const modeToggleBtn = document.getElementById('modeToggle');
+            body.classList.toggle('dark-mode');
+            const isDarkMode = body.classList.contains('dark-mode');
+            modeToggleBtn.innerHTML = isDarkMode ? '☀️' : '🌙';
+        }
+
+        function toggleLike() {
+            const likeCounter = document.getElementById('likeCounter');
+            const likeButton = document.getElementById('likeButton');
+            const hasLiked = localStorage.getItem('hasLiked1');
+
+            if (hasLiked) {
+                let likes = parseInt(localStorage.getItem('likes1')) || 0;
+                likes--;
+                localStorage.setItem('likes1', likes);
+                localStorage.removeItem('hasLiked1');
+            } else {
+                let likes = parseInt(localStorage.getItem('likes1')) || 0;
+                likes++;
+                localStorage.setItem('likes1', likes);
+                localStorage.setItem('hasLiked1', true);
+            }
+
+            likeCounter.textContent = `Likes: ${localStorage.getItem('likes1') || 0}`;
+            likeButton.disabled = !!hasLiked; // Disable the button if already liked
+        }
+
+        function addComment() {
+            const commentInput = document.getElementById('commentInput');
+            const commentsContainer = document.getElementById('comments');
+            const comment = commentInput.value;
+
+            if (!comment) return;
+
+            let comments = JSON.parse(localStorage.getItem('comments1')) || [];
+            comments.push(comment);
+            localStorage.setItem('comments1', JSON.stringify(comments));
+            displayComments();
+            commentInput.value = '';
+        }
+
+        function displayComments() {
+            const commentsContainer = document.getElementById('comments');
+            let comments = JSON.parse(localStorage.getItem('comments1')) || [];
+            let commentsHTML = '<ul>';
+            comments.forEach(comment => {
+                commentsHTML += `<li>${comment}</li>`;
+            });
+            commentsHTML += '<li>Placeholder comment1</li>';
+            commentsHTML += '<li>I tried guys</li>';
+            commentsHTML += '</ul>';
+            commentsContainer.innerHTML = commentsHTML;
+        }
+
+        function displayBlogData() {
+            const likeCounter = document.getElementById('likeCounter');
+            const commentsContainer = document.getElementById('comments');
+
+            const likes = parseInt(localStorage.getItem('likes1')) || 0;
+
+            likeCounter.textContent = `Likes: ${likes}`;
+            displayComments();
+        }
+
+        window.onload = function () {
+            displayBlogData();
+        };
+    </script>
+</body>
+</html>
